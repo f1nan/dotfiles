@@ -27,6 +27,9 @@ packadd! vim-repeat
 " support.
 packadd! vim-endwise
 
+" The best Git wrapper of all time.
+packadd! vim-fugitive
+
 " ALE (Asynchronous Lint Engine) is a plugin for providing linting in NeoVim
 " and Vim 8 while you edit your text files.
 packadd! ale
@@ -182,6 +185,42 @@ augroup ClosePreview
     au!
     au InsertLeave * if pumvisible() | pclose! | endif
 augroup END
+
+
+" Statusline -----------------------------------------------------------
+"
+" Alwasys show the statusline
+set laststatus=2
+
+function! LinterStatus() abort
+    " display errors from Ale in statusline
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? '' : printf(
+    \	'W:%d E:%d',
+    \   l:all_non_errors,
+    \   l:all_errors
+    \)
+endfunction
+
+set statusline=
+set statusline+=%#function#\ %n
+set statusline+=\ %*
+set statusline+=\ ‹‹
+set statusline+=\ %f\ %*
+set statusline+=\ ››
+set statusline+=\ %m
+set statusline+=%#keyword#\ %F
+set statusline+=%=
+set statusline+=\ %{LinterStatus()}
+set statusline+=\ ‹‹
+set statusline+=\ %l,%c
+set statusline+=\ ::
+set statusline+=\ %P
+set statusline+=\ ››\ %*
 
 
 " Mappings -------------------------------------------------------------

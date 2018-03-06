@@ -55,6 +55,7 @@ let g:netrw_winsize = 25        " relative size of netrw's window
 " Generate Documentation (all plugins have to be loaded before this line)
 silent! helptags ALL
 
+
 " General Settings -----------------------------------------------------
 "
 " Load Decent default settings

@@ -256,7 +256,7 @@ nnoremap <Leader>lp :lprevious<CR>
 nnoremap <Leader>lr :lrewind<CR>
 
 function! Run()
-    if &filetype == 'vim'
+    if &filetype == 'python'
         execute 'python3 %'
     endif
 endfunction

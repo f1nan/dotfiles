@@ -255,6 +255,15 @@ nnoremap <Leader>ln :lnext<CR>
 nnoremap <Leader>lp :lprevious<CR>
 nnoremap <Leader>lr :lrewind<CR>
 
+function! Run()
+    if &filetype == 'vim'
+        execute 'python3 %'
+    endif
+endfunction
+
+" Execute current file
+nnoremap <F5> :call Run()<CR>
+
 
 " Filetype specific settings -------------------------------------------
 

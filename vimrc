@@ -257,7 +257,7 @@ nnoremap <Leader>lr :lrewind<CR>
 
 function! Run()
     if &filetype == 'python'
-        execute 'python3 %'
+        execute '!python3 %'
     endif
 endfunction
 

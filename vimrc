@@ -35,7 +35,7 @@ packadd! vim-fugitive
 packadd! ale
 "Run linters only when I save a file
 let g:ale_lint_on_text_changed = 'never'
-" Don't run linters on right after I open a file
+" Don't run linters right after I open a file
 let g:ale_lint_on_enter = 0
 " Specify linters to check files with
 augroup Linters
@@ -94,7 +94,7 @@ set confirm
 set cmdheight=2
 
 " Show (parial) command in the last line of the screen
-se showcmd
+set showcmd
 
 " Show the line and column number of the cursor position, separated by a comma.
 set ruler

@@ -192,35 +192,29 @@ augroup END
 " Alwasys show the statusline
 set laststatus=2
 
-function! LinterStatus() abort
-    " display errors from Ale in statusline
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? '' : printf(
-    \	'W:%d E:%d',
-    \   l:all_non_errors,
-    \   l:all_errors
-    \)
-endfunction
-
+" Reset status line
 set statusline=
-set statusline+=%#function#\ %n
-set statusline+=\ %*
-set statusline+=\ ‹‹
-set statusline+=\ %f\ %*
-set statusline+=\ ››
+
+" Add path to file
+set statusline+=\ %f
+
+" Add modified flag
 set statusline+=\ %m
-set statusline+=%#keyword#\ %F
+
+" Add filetype
+set statusline+=\ %y
+
+" Switch to the right side
 set statusline+=%=
-set statusline+=\ %{LinterStatus()}
-set statusline+=\ ‹‹
-set statusline+=\ %l,%c
-set statusline+=\ ::
-set statusline+=\ %P
-set statusline+=\ ››\ %*
+
+" Add number of current line
+set statusline+=%l
+
+" Add number of total lines
+set statusline+=/%L
+
+" Add status of linter
+set statusline+=\ -\ %{ALEGetStatusLine()}\ 
 
 
 " Mappings -------------------------------------------------------------

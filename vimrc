@@ -99,6 +99,12 @@ set showcmd
 " Show the line and column number of the cursor position, separated by a comma.
 set ruler
 
+" Folds are indicated by markers
+set foldmethod=marker
+
+" Folds can only be nested twice
+setlocal foldnestmax=2
+
 " Search down into subfolders. Provides tab-completion for all file-related
 " tasks. Hit tab to :find by partial match. Use * to make it fuzzy.
 set path+=**
@@ -265,8 +271,6 @@ augroup PythonSettings
     autocmd!
     autocmd FileType python setlocal textwidth=72           " textwidth for docstrings and block comments
     autocmd FileType python setlocal colorcolumn=+8         " highlight 80st column
-    autocmd FileType python setlocal foldmethod=indent      " lines with equal indent form a fold
-    autocmd FileType python setlocal foldnestmax=2          " folds can only be nested twice
     autocmd FileType python setlocal formatoptions-=t       " don't autoformat code
     autocmd BufWritePre *.py :%s/\s\+$//e                   " automatically remove trailing white space
 augroup END

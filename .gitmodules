@@ -10,3 +10,6 @@
 [submodule "vim/pack/bundle/opt/ale"]
 	path = vim/pack/bundle/opt/ale
 	url = https://github.com/w0rp/ale.git
+[submodule "vim/pack/bundle/opt/jedi-vim"]
+	path = vim/pack/bundle/opt/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim

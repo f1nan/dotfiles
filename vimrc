@@ -23,6 +23,9 @@ packadd! ale
 " Add linters
 let g:ale_linters = {'python': ['pylint']}
 
+" jedi-vim is a VIM binding to the autocompletion library Jedi
+packadd! jedi-vim
+
 " Generate Documentation (all plugins have to be loaded before this line)
 silent! helptags ALL
 
@@ -185,7 +188,19 @@ set statusline+=%l
 set statusline+=/%L
 
 " Add status of linter
-"set statusline+=\ -\ %{ALEGetStatusLine()}\ 
+function! ALELinterStatus()
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+set statusline+=\ -\ %{ALELinterStatus()}\ 
 
 
 " Mappings -------------------------------------------------------------
@@ -215,20 +230,16 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-n> :Lexplore<CR>
 
 " Navigate the location-list
-nnoremap <Leader>ll :ll<CR>
-nnoremap <Leader>ln :lnext<CR>
-nnoremap <Leader>lp :lprevious<CR>
-nnoremap <Leader>lr :lrewind<CR>
+nnoremap  <F8> :lnext<CR>
+nnoremap <S-F8> :lprevious<CR>
 
+" Run current file
 function! Run()
     if &filetype == 'python'
         execute '!python3 %'
     endif
 endfunction
-
-" Execute current file
 nnoremap <F5> :call Run()<CR>
-
 
 " Filetype specific settings -------------------------------------------
 

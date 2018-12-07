@@ -1,33 +1,16 @@
 #!/usr/bin/env bash
 
-DOTFILES=(vimrc)
-BACKUP_DIR="$HOME"/dotfiles_old
+DOTFILES=(vimrc vim/)
+BACKUP_DIR="$HOME/dotfiles_$(date +%Y%m%d_%H%M%S)"
+PWD=$(pwd)
 
-backup_existing_dotfiles()
-{
-    echo "Backup existing dotfiles in $BACKUP_DIR"
-    mkdir -p "$BACKUP_DIR"
+echo "Backup existing dotfiles..."
+mkdir -p "$BACKUP_DIR"
+for file in ${DOTFILES[@]}; do
+    mv "$HOME/.$file" "$BACKUP_DIR" 2>/dev/null
+done
 
-    local file
-    for file in ${DOTFILES[@]}; do
-        mv "$HOME/.$file" "$BACKUP_DIR" 2>/dev/null
-    done
-}
-
-make_symlinks()
-{
-    echo "Create symlinks for ${DOTFILES[@]} in $HOME"
-
-    local file
-    for file in "${DOTFILES[@]}"; do
-        ln -s "$(pwd)/$file" "$HOME/.$file"
-    done
-}
-
-main()
-{
-    backup_existing_dotfiles
-    make_symlinks
-}
-
-main "$@"
+echo "Install dotfiles..."
+for file in "${DOTFILES[@]}"; do
+    cp -r "$PWD/$file" "$HOME/.$file"
+done

@@ -6,16 +6,16 @@
 " Surround.vim is all about 'surroundings': parentheses, brackets, quotes, XML
 " tags, and more. The plugin provides mappings to easily delete, change and add
 " such surroundings in pairs.
-"packadd! vim-surround
+packadd! vim-surround
 
 " Comment stuff out. Use gcc to comment out a line (takes a count), gc to
 " comment out the target of a motion (for example, gcap to comment out a
 " paragraph), gc in visual mode to comment out the selection, and gc in
 " operator pending mode to target a comment.
-"packadd! vim-commentary
+packadd! vim-commentary
 
 " Makes plugin maps repeatable with '.'.
-"packadd! vim-repeat
+packadd! vim-repeat
 
 " ALE (Asynchronous Lint Engine) is a plugin for providing linting in NeoVim
 " and Vim 8 while you edit your text files.

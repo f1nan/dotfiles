@@ -2,65 +2,42 @@
 
 
 " Plugins --------------------------------------------------------------
-"
-" Collection of the best colorschemes
-packadd! awesome-vim-colorschemes
 
 " Surround.vim is all about 'surroundings': parentheses, brackets, quotes, XML
 " tags, and more. The plugin provides mappings to easily delete, change and add
 " such surroundings in pairs.
-packadd! vim-surround
+"packadd! vim-surround
 
 " Comment stuff out. Use gcc to comment out a line (takes a count), gc to
 " comment out the target of a motion (for example, gcap to comment out a
 " paragraph), gc in visual mode to comment out the selection, and gc in
 " operator pending mode to target a comment.
-packadd! vim-commentary
+"packadd! vim-commentary
 
 " Makes plugin maps repeatable with '.'.
-packadd! vim-repeat
-
-" This is a simple plugin that helps to end certain structures automatically.
-" In Ruby, this means adding end after if, do, def and several other keywords.
-" In Vimscript, this amounts to appropriately adding endfunction, endif, etc.
-" There's also Bourne shell, VB (don't ask), C/C++ preprocessor, and Lua
-" support.
-packadd! vim-endwise
-
-" The best Git wrapper of all time.
-packadd! vim-fugitive
+"packadd! vim-repeat
 
 " ALE (Asynchronous Lint Engine) is a plugin for providing linting in NeoVim
 " and Vim 8 while you edit your text files.
-packadd! ale
+"packadd! ale
 "Run linters only when I save a file
-let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_text_changed = 'never'
 " Don't run linters right after I open a file
-let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_enter = 0
 " Specify linters to check files with
-augroup Linters
-    autocmd!
-    autocmd FileType python let b:ale_linters = ['flake8']
-    autocmd FileType c let b:ale_linters = ['gcc']
-augroup END
+"augroup Linters
+"    autocmd!
+"    autocmd FileType python let b:ale_linters = ['flake8']
+"    autocmd FileType c let b:ale_linters = ['gcc']
+"augroup END
 
-" A super simple, super minimal, super light-weight tab-completion plugin for
-" Vim.
-packadd! VimCompletesMe
-
-" NERDtree like setup for netrw
-let g:netrw_banner = 0          " get rid off the banner
-let g:netrw_liststyle = 3       " tree style listing
-let g:netrw_browse_split = 4    " open in previous window
-let g:netrw_altv = 1            " use right splitting
-let g:netrw_winsize = 25        " relative size of netrw's window
 
 " Generate Documentation (all plugins have to be loaded before this line)
 silent! helptags ALL
 
 
 " General Settings -----------------------------------------------------
-"
+
 " Load Decent default settings
 runtime! defaults.vim
 
@@ -102,8 +79,8 @@ set ruler
 " Folds are indicated by markers
 set foldmethod=marker
 
-" Folds can only be nested twice
-setlocal foldnestmax=2
+" Folds can only be nested four times
+setlocal foldnestmax=4
 
 " Search down into subfolders. Provides tab-completion for all file-related
 " tasks. Hit tab to :find by partial match. Use * to make it fuzzy.
@@ -146,8 +123,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Mapleader is space
-let mapleader = ' '
+" Mapleader is comma
+let mapleader = ','
 
 " Maximum textwidth is 79 characters
 set textwidth=79
@@ -170,14 +147,11 @@ set splitbelow
 " Toggle 'paste' options with <F2>
 set pastetoggle=<F2>
 
-" Folds are open by default
-set nofoldenable
-
 " Highlight the screen line of the cursor
 set cursorline
 
 " Colorschme
-colorscheme minimalist
+colorscheme desert
 
 " Show cursorline only in active window
 augroup CursorlineOnlyInActiveWindow
@@ -194,7 +168,7 @@ augroup END
 
 
 " Statusline -----------------------------------------------------------
-"
+
 " Alwasys show the statusline
 set laststatus=2
 
@@ -220,11 +194,11 @@ set statusline+=%l
 set statusline+=/%L
 
 " Add status of linter
-set statusline+=\ -\ %{ALEGetStatusLine()}\ 
+"set statusline+=\ -\ %{ALEGetStatusLine()}\ 
 
 
 " Mappings -------------------------------------------------------------
-"
+
 " Yank until the end of the line
 map Y y$
 
@@ -268,16 +242,26 @@ nnoremap <F5> :call Run()<CR>
 " Filetype specific settings -------------------------------------------
 
 augroup PythonSettings
+    " Clear autocommands for this group
     autocmd!
-    autocmd FileType python setlocal textwidth=72           " textwidth for docstrings and block comments
-    autocmd FileType python setlocal colorcolumn=+8         " highlight 80st column
-    autocmd FileType python setlocal formatoptions-=t       " don't autoformat code
-    autocmd BufWritePre *.py :%s/\s\+$//e                   " automatically remove trailing white space
+
+    " Textwidth for docstrings and block comments
+    autocmd FileType python setlocal textwidth=72
+
+    " Don't autoformat code
+    autocmd FileType python setlocal formatoptions-=t
+
+    " Automatically remove trailing white space
+    autocmd BufWritePre *.py :%s/\s\+$//e
 augroup END
 
 augroup CSettings
+    " Clear autocommands for this group
     autocmd!
-    autocmd FileType c setlocal textwidth=79                " textwidth for docstrings and block comments
-    autocmd FileType c setlocal colorcolumn=+1              " highlight 80st column
-    autocmd BufWritePre *.c,*.cpp,*.h :%s/\s\+$//e          " automatically remove trailing white space
+
+    " textwidth for docstrings and block comments
+    autocmd FileType c setlocal textwidth=79
+
+    " automatically remove trailing white space
+    autocmd BufWritePre *.c,*.cpp,*.h :%s/\s\+$//e
 augroup END

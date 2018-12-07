@@ -256,6 +256,9 @@ augroup PythonSettings
 
     " Automatically remove trailing white space
     autocmd BufWritePre *.py :%s/\s\+$//e
+
+    " Don't popup docstring window during completion
+    autocmd FileType python setlocal completeopt-=preview
 augroup END
 
 augroup CSettings

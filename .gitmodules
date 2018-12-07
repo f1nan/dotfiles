@@ -7,3 +7,6 @@
 [submodule "vim/pack/bundle/opt/vim-commentary"]
 	path = vim/pack/bundle/opt/vim-commentary
 	url = https://github.com/tpope/vim-commentary
+[submodule "vim/pack/bundle/opt/ale"]
+	path = vim/pack/bundle/opt/ale
+	url = https://github.com/w0rp/ale.git

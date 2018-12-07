@@ -19,18 +19,9 @@ packadd! vim-repeat
 
 " ALE (Asynchronous Lint Engine) is a plugin for providing linting in NeoVim
 " and Vim 8 while you edit your text files.
-"packadd! ale
-"Run linters only when I save a file
-"let g:ale_lint_on_text_changed = 'never'
-" Don't run linters right after I open a file
-"let g:ale_lint_on_enter = 0
-" Specify linters to check files with
-"augroup Linters
-"    autocmd!
-"    autocmd FileType python let b:ale_linters = ['flake8']
-"    autocmd FileType c let b:ale_linters = ['gcc']
-"augroup END
-
+packadd! ale
+" Add linters
+let g:ale_linters = {'python': ['pylint']}
 
 " Generate Documentation (all plugins have to be loaded before this line)
 silent! helptags ALL

@@ -1,0 +1,9 @@
+[submodule "vim/pack/bundle/vim-surround"]
+	path = vim/pack/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/pack/bundle/vim-commentary"]
+	path = vim/pack/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "vim/pack/bundle/vim-repeat"]
+	path = vim/pack/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat

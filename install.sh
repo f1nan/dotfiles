@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DOTFILES=(vimrc vim/)
+DOTFILES=(vimrc vim/ pylintrc)
 BACKUP_DIR="$HOME/dotfiles_$(date +%Y%m%d_%H%M%S)"
 PWD=$(pwd)
 

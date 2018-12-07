@@ -25,6 +25,7 @@ let g:ale_linters = {'python': ['pylint']}
 
 " jedi-vim is a VIM binding to the autocompletion library Jedi
 packadd! jedi-vim
+let g:jedi#force_py_version=3
 
 " Generate Documentation (all plugins have to be loaded before this line)
 silent! helptags ALL

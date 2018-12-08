@@ -27,6 +27,16 @@ let g:ale_linters = {'python': ['pylint']}
 packadd! jedi-vim
 let g:jedi#force_py_version=3
 
+" UltiSnips is the ultimate solution for snippets in Vim. It has tons of
+" feautres and is very fast.
+packadd! ultisnips
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<c-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
+
+" vim-snippets contains snippets files for various programming languages
+packadd! vim-snippets
+
 " Generate Documentation (all plugins have to be loaded before this line)
 silent! helptags ALL
 

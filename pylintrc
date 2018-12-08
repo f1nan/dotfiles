@@ -139,7 +139,8 @@ disable=print-statement,
         deprecated-sys-function,
         exception-escape,
         comprehension-escape,
-        missing-docstring
+        missing-docstring,
+        too-few-public-methods
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
@@ -397,7 +398,7 @@ variable-naming-style=snake_case
 
 # Regular expression matching correct variable names. Overrides variable-
 # naming-style.
-variable-rgx= (([a-z][a-z0-9_]{0,30})|(_[a-z0-9_]*))$
+#variable-rgx=
 
 
 [VARIABLES]
